@@ -25,7 +25,8 @@ export type ThemeId =
 	| 'caffeine'
 	| 'neon'
 	| 'breeze'
-	| 'amoled';
+	| 'amoled'
+	| 'radio4000';
 
 // `color` is just the picker swatch.
 type Theme = { id: ThemeId; label: string; color: string };
@@ -37,7 +38,8 @@ export const THEMES: Theme[] = [
 	{ id: 'caffeine', label: 'Caffeine', color: 'oklch(0.4341 0.0392 41.9938)' },
 	{ id: 'neon', label: 'Neon', color: 'oklch(0.6726 0.2904 341.4084)' },
 	{ id: 'breeze', label: 'Breeze', color: 'oklch(0.7227 0.1920 149.5793)' },
-	{ id: 'amoled', label: 'AMOLED', color: 'oklch(0 0 0)' }
+	{ id: 'amoled', label: 'AMOLED', color: 'oklch(0 0 0)' },
+	{ id: 'radio4000', label: 'Radio4000', color: 'oklch(0.5 0.25 290)' }
 ];
 
 // A removed accent preset falls back to the default palette, carrying its colour over as a custom
@@ -58,6 +60,7 @@ export const FONTS: { label: string; value: string }[] = [
 	{ label: 'Montserrat', value: "'Montserrat Variable', sans-serif" },
 	{ label: 'Outfit', value: "'Outfit Variable', sans-serif" },
 	{ label: 'DM Sans', value: "'DM Sans Variable', sans-serif" },
+	{ label: 'Radio Canada', value: "'Radio Canada Variable', sans-serif" },
 	{ label: 'System', value: 'ui-sans-serif, system-ui, sans-serif' }
 ];
 

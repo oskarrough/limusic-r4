@@ -6,6 +6,7 @@
 @import "@fontsource-variable/montserrat";
 @import "@fontsource-variable/outfit";
 @import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/radio-canada";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -489,6 +490,85 @@
 	--sidebar-accent-foreground: oklch(0.7118 0.0129 286.0665);
 	--sidebar-border: oklch(0.4461 0.0263 256.8018);
 	--sidebar-ring: oklch(0.7729 0.1535 163.2231);
+}
+
+/* Radio4000's own palette (r4-svelte, src/styles: theme-1.css, color-scales.css, variables.css).
+   r4 derives two 12-step ramps, accent and gray, from four base colours with oklch(from …); these
+   are those steps resolved to literals, so nothing here leans on relative colour syntax. Mapping:
+   page gray-1, text gray-12, raised surfaces gray-2 (dark: gray-4, r4's "interface-elevated"),
+   buttons gray-3, muted text gray-10, borders gray-4 (dark: gray-6), accent-9 the brand purple.
+   Light bases: gray oklch(0.67 0.012 70), accent oklch(0.5 0.25 290).
+   Dark bases: gray oklch(0.67 0.008 70), accent oklch(0.63 0.2 296). */
+.theme-radio4000 {
+	--background: oklch(0.99 0.006 70);
+	--foreground: oklch(0.19 0.0192 70);
+	--card: oklch(0.965 0.0072 70);
+	--card-foreground: oklch(0.19 0.0192 70);
+	--popover: oklch(0.99 0.006 70);
+	--popover-foreground: oklch(0.19 0.0192 70);
+	--primary: oklch(0.5 0.25 290);
+	--primary-foreground: oklch(0.99 0.006 70);
+	--secondary: oklch(0.935 0.0084 70);
+	--secondary-foreground: oklch(0.302 0.018 70);
+	--muted: oklch(0.935 0.0084 70);
+	--muted-foreground: oklch(0.412 0.0168 70);
+	--accent: oklch(0.5 0.25 290);
+	--accent-foreground: oklch(0.99 0.006 70);
+	--destructive: oklch(0.5 0.16 35);
+	--border: oklch(0.895 0.0096 70);
+	--input: oklch(0.895 0.0096 70);
+	--ring: oklch(0.5 0.25 290);
+	--chart-1: oklch(0.5 0.25 290);
+	--chart-2: oklch(0.62 0.2125 290);
+	--chart-3: oklch(0.708 0.1875 290);
+	--chart-4: oklch(0.412 0.25 290);
+	--chart-5: oklch(0.302 0.25 290);
+	--sidebar: oklch(0.965 0.0072 70);
+	--sidebar-foreground: oklch(0.19 0.0192 70);
+	--sidebar-primary: oklch(0.5 0.25 290);
+	--sidebar-primary-foreground: oklch(0.99 0.006 70);
+	--sidebar-accent: oklch(0.935 0.0084 70);
+	--sidebar-accent-foreground: oklch(0.19 0.0192 70);
+	--sidebar-border: oklch(0.895 0.0096 70);
+	--sidebar-ring: oklch(0.5 0.25 290);
+	--radius: 0.4rem;
+	--font-sans: 'Radio Canada Variable', system-ui, sans-serif;
+	--font-heading: 'Radio Canada Variable', system-ui, sans-serif;
+	--font-mono: ui-monospace, monospace;
+	--shadow-lg: 0 0.5rem 1rem rgb(0 0 0 / 0.1);
+}
+.dark.theme-radio4000 {
+	--background: oklch(0.18 0.0128 70);
+	--foreground: oklch(0.95 0.004 70);
+	--card: oklch(0.275 0.0104 70);
+	--card-foreground: oklch(0.95 0.004 70);
+	--popover: oklch(0.275 0.0104 70);
+	--popover-foreground: oklch(0.95 0.004 70);
+	--primary: oklch(0.63 0.2 296);
+	--primary-foreground: oklch(0.18 0.0128 70);
+	--secondary: oklch(0.235 0.0112 70);
+	--secondary-foreground: oklch(0.868 0.0048 70);
+	--muted: oklch(0.235 0.0112 70);
+	--muted-foreground: oklch(0.758 0.0064 70);
+	--accent: oklch(0.63 0.2 296);
+	--accent-foreground: oklch(0.18 0.0128 70);
+	--destructive: oklch(0.5 0.16 35);
+	--border: oklch(0.387 0.0088 70);
+	--input: oklch(0.387 0.0088 70);
+	--ring: oklch(0.63 0.2 296);
+	--chart-1: oklch(0.63 0.2 296);
+	--chart-2: oklch(0.758 0.2 296);
+	--chart-3: oklch(0.868 0.2 296);
+	--chart-4: oklch(0.55 0.18 296);
+	--chart-5: oklch(0.462 0.16 296);
+	--sidebar: oklch(0.205 0.012 70);
+	--sidebar-foreground: oklch(0.95 0.004 70);
+	--sidebar-primary: oklch(0.63 0.2 296);
+	--sidebar-primary-foreground: oklch(0.18 0.0128 70);
+	--sidebar-accent: oklch(0.275 0.0104 70);
+	--sidebar-accent-foreground: oklch(0.95 0.004 70);
+	--sidebar-border: oklch(0.387 0.0088 70);
+	--sidebar-ring: oklch(0.63 0.2 296);
 }
 
 /* Pitch black for OLED/AMOLED panels: --background is #000000, so those pixels are switched off

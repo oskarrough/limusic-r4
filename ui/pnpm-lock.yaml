@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/radio-canada':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@radio4000/sdk':
         specifier: ^0.8.2
         version: 0.8.2
@@ -134,6 +137,9 @@ packages:
 
   '@fontsource-variable/oxanium@5.2.8':
     resolution: {integrity: sha512-W3HWxRLXVB6yox3dgm1DIGOp98pz8KglwiM6/2BsMopvZrg98mXI9citFWz2pUX0FOOLwf8fmHxX+KrIn+6BoA==}
+
+  '@fontsource-variable/radio-canada@5.3.0':
+    resolution: {integrity: sha512-fETv8aje0pTyUaTVX792FCS7SV+QmNpJGpbf4atw8yD49AUhKWhp4qtYnOdYTkn4Cf5Cf/WvX5JU8+wyF1Ey0A==}
 
   '@hugeicons/core-free-icons@4.2.3':
     resolution: {integrity: sha512-fpiU0qFZkv4ABi23xJ2m4qNr0BBfuIaYjPboN8WDA6aj9D+OzXa7eykxKOpACZRuGbDz1U9S5DsNx1d5KNnsgA==}
@@ -915,6 +921,8 @@ snapshots:
   '@fontsource-variable/outfit@5.3.0': {}
 
   '@fontsource-variable/oxanium@5.2.8': {}
+
+  '@fontsource-variable/radio-canada@5.3.0': {}
 
   '@hugeicons/core-free-icons@4.2.3': {}
 
