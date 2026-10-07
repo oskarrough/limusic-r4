@@ -23,6 +23,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { ON_REPEAT_ID, isLocalPlaylist, type BrowseItem } from '$lib/api';
 	import { thumb } from '$lib/thumb';
+	import { hrefFor } from '$lib/browse';
 	import PlaylistMenu from './PlaylistMenu.svelte';
 	import { library, personal, ui, openNewPlaylist, toggleSidebar } from '$lib/player.svelte';
 	import { mergeSaved, orderLibrary } from '$lib/personal';
@@ -55,12 +56,7 @@
 			.filter((p) => /\d/.test(p))
 			.at(-1) ?? s;
 
-	const playlistHref = (item: BrowseItem) =>
-		item.kind === 'album'
-			? `/album/${encodeURIComponent(item.id)}`
-			: item.kind === 'artist'
-				? `/artist/${encodeURIComponent(item.id)}`
-				: `/playlist/${encodeURIComponent(item.id)}`;
+	const playlistHref = hrefFor;
 
 	// Account lives in the titlebar now — see AccountMenu.svelte.
 

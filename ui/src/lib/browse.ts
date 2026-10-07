@@ -5,6 +5,7 @@ import { goto } from '$app/navigation';
 import * as api from './api';
 import type { BrowseItem, SongItem } from './api';
 import { t } from './i18n.svelte';
+import * as r4 from './r4';
 import { enqueue, openAddManyToPlaylist, playFrom, playSong, toast, touchPick } from './player.svelte';
 
 /**
@@ -34,6 +35,7 @@ export const asSong = (i: BrowseItem): SongItem => ({
 
 /** Where a non-song item lives. Songs have no page — they play. */
 export const hrefFor = (i: BrowseItem): string =>
+	r4.isChannelId(i.id) ? r4.channelHref(r4.slugOf(i.id)) :
 	// A local artist is drawn as an artist (circle, no play button) but opens the album route:
 	// there is no channel behind files on disk, so the real artist page has nothing to show.
 	i.id.startsWith(api.LOCAL_ARTIST_PREFIX)
@@ -66,7 +68,10 @@ export async function playItem(item: BrowseItem, shuffle = false): Promise<void>
 		return;
 	}
 	try {
-		if (item.kind === 'album') {
+		if (r4.isChannelId(item.id)) {
+			const ch = await r4.channelPage(r4.slugOf(item.id));
+			await playFrom(ch.item, ch.tracks, null, undefined, shuffle);
+		} else if (item.kind === 'album') {
 			const album = await api.getAlbum(item.id);
 			await playFrom(item, album.items, null, album.playlistId ?? undefined, shuffle);
 		} else {
@@ -102,7 +107,10 @@ export async function enqueueItem(item: BrowseItem, next: boolean): Promise<void
 		return;
 	}
 	try {
-		if (item.kind === 'album') {
+		if (r4.isChannelId(item.id)) {
+			const ch = await r4.channelPage(r4.slugOf(item.id));
+			await enqueue(ch.tracks, next, ch.item.title);
+		} else if (item.kind === 'album') {
 			const album = await api.getAlbum(item.id);
 			await enqueue(album.items, next, album.title ?? item.title, album.continuation);
 		} else {
@@ -130,6 +138,10 @@ export async function addItemToPlaylist(item: BrowseItem): Promise<void> {
 		return;
 	}
 	try {
+		if (r4.isChannelId(item.id)) {
+			openAddManyToPlaylist((await r4.channelPage(r4.slugOf(item.id))).tracks);
+			return;
+		}
 		const src =
 			item.kind === 'album' ? await api.getAlbum(item.id) : await api.getPlaylist(item.id);
 		if (src.continuation) toast.error(t('toasts.partial_playlist_added'));

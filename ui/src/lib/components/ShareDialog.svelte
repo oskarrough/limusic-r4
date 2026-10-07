@@ -14,9 +14,11 @@
 	import { thumb } from '$lib/thumb';
 	import { ui, toast } from '$lib/player.svelte';
 	import { t } from '$lib/i18n.svelte';
+	import { channelUrl, isChannelId, slugOf } from '$lib/r4';
 
 	// Playlist browseIds carry a `VL` prefix that the watch/playlist URLs don't take.
 	function shareUrl(item: BrowseItem): string {
+		if (isChannelId(item.id)) return channelUrl(slugOf(item.id));
 		const id = item.id.replace(/^VL/, '');
 		if (item.kind === 'song') return `https://music.youtube.com/watch?v=${id}`;
 		if (item.kind === 'artist') return `https://music.youtube.com/channel/${id}`;
@@ -44,7 +46,7 @@
 		privacy = undefined;
 		owned = false;
 		wasPrivate = false;
-		if (!item || item.kind !== 'playlist') return;
+		if (!item || item.kind !== 'playlist' || isChannelId(item.id)) return;
 		const key = `playlist:${item.id}`;
 		const apply = (p: PlaylistPage) => {
 			// The modal may have been closed or retargeted while the fetch was in flight.

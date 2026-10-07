@@ -24,6 +24,7 @@
 	import * as api from '$lib/api';
 	import type { BrowseItem } from '$lib/api';
 	import { addItemToPlaylist, enqueueItem, playItem } from '$lib/browse';
+	import { isChannelId } from '$lib/r4';
 	import { anchorMenu, ctxHost, fitMenu, NO_ANCHOR, toBody } from '$lib/menu';
 	import { t } from '$lib/i18n.svelte';
 	import {
@@ -273,7 +274,7 @@
 				<HugeiconsIcon icon={ArrowDownWideNarrowIcon} class="h-4 w-4" /> {t("player.add_to_queue")}
 			</button>
 		{/if}
-		{#if onYouTube}
+		{#if onYouTube && !isChannelId(item.id)}
 			<button
 				class="flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm hover:bg-accent/10"
 				onclick={(e) => run(e, () => startRadio(item.kind as 'artist' | 'album' | 'playlist', item.id, item.title))}

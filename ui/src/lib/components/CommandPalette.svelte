@@ -19,7 +19,8 @@
 	import { Skeleton } from '$lib/components/ui/skeleton';
 	import ExplicitIcon from './ExplicitIcon.svelte';
 	import ItemMenu from './ItemMenu.svelte';
-	import { searchSuggestions, type BrowseItem, type SearchSuggestions } from '$lib/api';
+	import { type BrowseItem, type SearchSuggestions } from '$lib/api';
+	import { suggest as searchSuggestions } from '$lib/r4';
 	import { openItem, rowMeta } from '$lib/browse';
 	import { ui } from '$lib/player.svelte';
 	import { thumb } from '$lib/thumb';

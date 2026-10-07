@@ -67,7 +67,7 @@ export const prefs = $state({
 	ambient: false,
 	/** `autoplay`: the queue keeps going with similar songs. Switched from the queue panel as well
 	 *  as Settings, so both read it here. */
-	autoplay: true,
+	autoplay: false,
 	/** The Scrobbling tab's on switch (`lastfm_config.enabled`). The track menu offers "Edit
 	 *  scrobble" only while it is on, so a user who paused scrobbling isn't shown it. */
 	scrobbling: true
@@ -1610,7 +1610,7 @@ export function initApp(mini = false): () => void {
 			prefs.nativeVideo = s.native_video === 'true';
 			prefs.ambient = s.ambient_light === 'true';
 			prefs.discordRpc = s.discord_rpc === 'true';
-			prefs.autoplay = s.autoplay !== 'false';
+			prefs.autoplay = s.autoplay === 'true';
 			prefs.scrobbling = parseScrobbleConfig(s.lastfm_config).enabled;
 			// Half of what the app shows is YouTube's own text, and Rust asks for it in the language
 			// this setting holds (#274). It reads the setting at startup, before the SPA exists to

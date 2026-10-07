@@ -2774,10 +2774,10 @@ impl AppState {
         self.db.get_setting("shuffle_whole_queue").as_deref() == Some("true")
     }
 
-    /// Autoplay enabled? Default on; only an explicit `"false"` disables it (mirrors
-    /// `history_enabled`).
+    /// Autoplay enabled? Default off: a Radio4000 channel ends where its curator ended it, and
+    /// YouTube's radio would wander off the channel. Only an explicit `"true"` enables it.
     fn autoplay_enabled(&self) -> bool {
-        self.db.get_setting("autoplay").map(|v| v != "false").unwrap_or(true)
+        self.db.get_setting("autoplay").as_deref() == Some("true")
     }
 
     /// Lift the hold `play_song` put on the autoplay trigger while it hydrated a radio, unless a

@@ -28,7 +28,6 @@
 	} from '@hugeicons/core-free-icons';
 	import LastFmIcon from './LastFmIcon.svelte';
 	import DiscordIcon from './DiscordIcon.svelte';
-	import AccountMenu from './AccountMenu.svelte';
 	import { appIcon } from '$lib/appicon.svelte';
 	import * as api from '$lib/api';
 	import { openMiniPlayer, playback, prefs, refreshView, toast, ui } from '$lib/player.svelte';
@@ -179,7 +178,7 @@
 	<div class="flex h-full items-center">
 		<!-- Account first, then the integrations, then the window controls. The drag region lives on
 		     <header> only, so these children are ordinary buttons — don't add the attribute here. -->
-		<AccountMenu />
+		<!-- R4 build: no Google account; channels come from Radio4000. -->
 		<div class="mx-1.5 h-4 w-px bg-border"></div>
 
 		<!-- Paste a YouTube Music link and go to it: the only way into a playlist that is shared by
